@@ -10,25 +10,24 @@ export default function Home() {
   );
 
   const now = new Date();
-  // const now = new Date("2026-06-01");
 
   const nama = [
     "Anggota - Sjakur",
     "H. Sutikadiono",
     "Wahib",
-    "Muhammad",
-    "Ghofur",
-    "Abdus Sjakur",
-    "Isman Hadi",
+    "H. Muhammad ",
+    "Heru Abd Ghofur",
+    "H. Abdus Sjakur",
+    "H. Isman Hadi",
     "Zainudin",
     "H. Yusuf",
     "Imam Mukarom",
     "M. Khoirul Umam",
-    "Anas",
+    "Anas Dhofir",
     "H. Karsono",
     "Achamad",
     "K. Sukamto",
-    "K. Safiq",
+    "K. Syafiq",
     "Muh. Roni",
     "H.Sukemi",
     "Muhaimin",
@@ -77,6 +76,23 @@ export default function Home() {
     }
 
     next.setDate(now.getDate() + selisih);
+    next.setHours(18, 0, 0, 0);
+
+    return formatTanggal(next);
+  };
+
+  const nextMalamMinggu2 = () => {
+    const next = new Date(now);
+
+    let hariIni = now.getDay();
+    let selisih = (6 - hariIni + 7) % 7;
+
+    if (selisih === 0 && now.getHours() >= 18) {
+      selisih = 7;
+    }
+
+    // +14 hari (2 minggu setelah malam minggu pertama)
+    next.setDate(now.getDate() + selisih + 14);
     next.setHours(18, 0, 0, 0);
 
     return formatTanggal(next);
@@ -157,18 +173,20 @@ export default function Home() {
         </button>
       </div>
 
-      <div className="text-center font-bold text-xl mt-4">Khataman</div>
+      <div className="text-center font-bold text-xl mt-4">
+        Daftar Juz Khataman
+      </div>
 
       <div className="flex flex-col p-4">
         <div className="flex">
-          <div className="flex-1">Hari ini</div>
-          <div className="flex-1">: {formatTanggal(now)}</div>
-        </div>
-
-        <div className="flex">
-          <div className="flex-1">Khataman Berikutnya</div>
+          <div className="flex-1">Khataman Hari ini</div>
           <div className="flex-1">: {nextMalamMinggu()}</div>
         </div>
+
+        {/* <div className="flex">
+          <div className="flex-1">Khataman Berikutnya</div>
+          <div className="flex-1">: {nextMalamMinggu2()}</div>
+        </div> */}
       </div>
 
       <div className="p-4">
