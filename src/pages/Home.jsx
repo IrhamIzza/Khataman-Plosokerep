@@ -171,16 +171,16 @@ export default function Home() {
               <p>
                 Ngaturi pirso dumateng sedoyo anggota Jam’iyah Khotmil Qur’an,
                 bilih mbenjing dinten{" "}
-                <span className="font-bold text-blue-800 underline">
+                <span className="font-bold text-blue-600 underline">
                   Sabtu malem Ahad tgl{" "}
-                  <span className="text-green-800">{nextMalamMinggu()}</span> ,
+                  <span className="text-green-700">{nextMalamMinggu()}</span> ,
                   ba'dah Maghrib
                 </span>{" "}
                 awal wonten dalem ipun{" "}
-                <span className="font-bold text-green-800 underline whitespace-pre-line">
+                <span className="font-bold text-green-700 underline whitespace-pre-line">
                   {namaInput}
                 </span>
-                <span className="font-bold text-blue-800 underline whitespace-pre-line">
+                <span className="font-bold text-blue-600 underline whitespace-pre-line">
                   {tempat}
                 </span>
               </p>
