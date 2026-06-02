@@ -6,8 +6,9 @@ import { toPng } from "html-to-image";
 
 export default function Home() {
   const [tempat, setTempat] = useState(
-    "Bpk. Anas Dhofir Jln. Ploso No.... RT.02 RW.02 Kota Blitar",
+    " Jln. Ploso No. RT.02 RW.02 Kota Blitar",
   );
+  const [namaInput, setNamaInput] = useState("Bpk.");
 
   const now = new Date();
 
@@ -130,6 +131,18 @@ export default function Home() {
           rows={2}
           className="w-full border p-2"
         />
+
+        <label htmlFor="tempat" className="block mb-1 font-medium">
+          Nama 
+        </label>
+
+        <textarea
+          id="namaInput"
+          value={namaInput}
+          onChange={(e) => setNamaInput(e.target.value)}
+          rows={1}
+          className="w-full border p-2"
+        />
       </div>
 
       <div ref={divRef} className="bg-white p-4">
@@ -146,10 +159,12 @@ export default function Home() {
                   Sabtu malem Ahad tgl 06 Juni 2026, ba'dah Maghrib
                 </span>{" "}
                 awal wonten dalem ipun{" "}
+                <span className="font-bold text-green-800 underline whitespace-pre-line">
+                  {namaInput}
+                </span>
                 <span className="font-bold text-blue-800 underline whitespace-pre-line">
                   {tempat}
                 </span>
-                .
               </p>
               <p>Makaten saking kulo, matur nuwun🙏. </p>
             </div>
