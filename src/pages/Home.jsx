@@ -9,6 +9,8 @@ export default function Home() {
     " Jln. Ploso No. RT.02 RW.02 Kota Blitar",
   );
   const [namaInput, setNamaInput] = useState("Bpk.");
+  const divRef = useRef(null);
+  const daftarRef = useRef(null);
 
   const now = new Date();
 
@@ -99,8 +101,6 @@ export default function Home() {
     return formatTanggal(next);
   };
 
-  const divRef = useRef(null);
-
   const downloadImage = async () => {
     if (!divRef.current) return;
 
@@ -113,6 +113,22 @@ export default function Home() {
 
     const link = document.createElement("a");
     link.download = "undangan-khataman.png";
+    link.href = dataUrl;
+    link.click();
+  };
+
+  const downloadDaftar = async () => {
+    if (!daftarRef.current) return;
+
+    const dataUrl = await toPng(daftarRef.current, {
+      quality: 1,
+      pixelRatio: 2,
+      cacheBust: true,
+      backgroundColor: "#ffffff",
+    });
+
+    const link = document.createElement("a");
+    link.download = "daftar-khataman.png";
     link.href = dataUrl;
     link.click();
   };
@@ -133,7 +149,7 @@ export default function Home() {
         />
 
         <label htmlFor="tempat" className="block mb-1 font-medium">
-          Nama 
+          Nama
         </label>
 
         <textarea
@@ -156,7 +172,9 @@ export default function Home() {
                 Ngaturi pirso dumateng sedoyo anggota Jam’iyah Khotmil Qur’an,
                 bilih mbenjing dinten{" "}
                 <span className="font-bold text-blue-800 underline">
-                  Sabtu malem Ahad tgl 06 Juni 2026, ba'dah Maghrib
+                  Sabtu malem Ahad tgl{" "}
+                  <span className="text-green-800">{nextMalamMinggu()}</span> ,
+                  ba'dah Maghrib
                 </span>{" "}
                 awal wonten dalem ipun{" "}
                 <span className="font-bold text-green-800 underline whitespace-pre-line">
@@ -188,38 +206,48 @@ export default function Home() {
         </button>
       </div>
 
-      <div className="text-center font-bold text-xl mt-4">
-        Daftar Juz Khataman
-      </div>
-
-      <div className="flex flex-col p-4">
-        <div className="flex">
-          <div className="flex-1">Khataman Hari ini</div>
-          <div className="flex-1">: {nextMalamMinggu()}</div>
+      <div ref={daftarRef} className="bg-white pb-8">
+        <div className="text-center font-bold text-xl mt-4">
+          Daftar Juz Khataman
         </div>
 
-        {/* <div className="flex">
+        <div className="flex flex-col p-4">
+          <div className="flex">
+            <div className="flex-1">Khataman Hari ini</div>
+            <div className="flex-1">: {nextMalamMinggu()}</div>
+          </div>
+
+          {/* <div className="flex">
           <div className="flex-1">Khataman Berikutnya</div>
           <div className="flex-1">: {nextMalamMinggu2()}</div>
         </div> */}
-      </div>
-
-      <div className="p-4">
-        <div className="grid grid-cols-[50px_1fr_60px] font-bold">
-          <div className="border p-2 text-center">No</div>
-          <div className="border p-2 text-center">Nama</div>
-          <div className="border p-2 text-center">Juz</div>
         </div>
 
-        {dataKhataman.map((item, index) => (
-          <div key={index} className="grid grid-cols-[50px_1fr_60px]">
-            <div className="border p-2 text-center">{index + 1}</div>
-
-            <div className="border p-2">{item.nama}</div>
-
-            <div className="border p-2 text-center">{item.juz}</div>
+        <div className="px-4">
+          <div className="grid grid-cols-[50px_1fr_60px] font-bold">
+            <div className="border p-2 text-center">No</div>
+            <div className="border p-2 text-center">Nama</div>
+            <div className="border p-2 text-center">Juz</div>
           </div>
-        ))}
+
+          {dataKhataman.map((item, index) => (
+            <div key={index} className="grid grid-cols-[50px_1fr_60px]">
+              <div className="border p-2 text-center">{index + 1}</div>
+
+              <div className="border p-2">{item.nama}</div>
+
+              <div className="border p-2 text-center">{item.juz}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="flex justify-center py-4 ">
+        <button
+          onClick={downloadDaftar}
+          className="px-4 py-2 bg-green-600 text-white rounded cursor-pointer"
+        >
+          Download Daftar Khataman
+        </button>
       </div>
     </div>
   );
