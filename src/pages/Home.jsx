@@ -74,12 +74,7 @@ export default function Home() {
     let hariIni = now.getDay();
     let selisih = (6 - hariIni + 7) % 7;
 
-    if (selisih === 0 && now.getHours() >= 18) {
-      selisih = 7;
-    }
-
     next.setDate(now.getDate() + selisih);
-    next.setHours(18, 0, 0, 0);
 
     return formatTanggal(next);
   };
@@ -173,8 +168,10 @@ export default function Home() {
                 bilih mbenjing dinten{" "}
                 <span className="font-bold text-blue-600 underline">
                   Sabtu malem Ahad tgl{" "}
-                  <span className="text-green-700">{nextMalamMinggu()}</span> ,
-                  ba'dah Maghrib
+                  <span className="text-green-700 underline">
+                    {nextMalamMinggu()}
+                  </span>{" "}
+                  , ba'dah Maghrib
                 </span>{" "}
                 awal wonten dalem ipun{" "}
                 <span className="font-bold text-green-700 underline whitespace-pre-line">
