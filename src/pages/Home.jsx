@@ -50,7 +50,7 @@ export default function Home() {
   const juz = Array.from({ length: 30 }, (_, i) => i + 1);
 
   const weekNumber = useMemo(() => {
-    const startDate = new Date("2026-05-31");
+    const startDate = new Date(2026, 4, 31);
     const diffTime = now - startDate;
     return Math.floor(diffTime / (7 * 24 * 60 * 60 * 1000));
   }, []);
