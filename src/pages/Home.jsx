@@ -15,7 +15,7 @@ export default function Home() {
   const now = new Date();
 
   const nama = [
-    "Anggota - Sjakur",
+    "Langgar An Nur",
     "H. Sutikadiono",
     "Wahib",
     "H. Muhammad ",
@@ -163,7 +163,7 @@ export default function Home() {
             <img src={foto2} alt="logo" className="mx-auto h-30" />
 
             <div className="text-lg">
-              <p>
+              <div>
                 Ngaturi pirso dumateng sedoyo anggota Jam’iyah Khotmil Qur’an,
                 bilih mbenjing 
                 <ul className="list-none p-0">
@@ -211,7 +211,7 @@ export default function Home() {
                 <span className="font-bold text-blue-600 underline whitespace-pre-line">
                   {tempat}
                 </span> */}
-              </p>
+              </div>
               <p>Makaten saking kulo, matur nuwun🙏🙏. </p>
             </div>
 
@@ -259,10 +259,10 @@ export default function Home() {
           </div>
 
           {dataKhataman.map((item, index) => (
-            <div key={index} className="grid grid-cols-[50px_1fr_60px]">
+            <div key={index} className="grid grid-cols-[50px_1fr_60px] " >
               <div className="border p-2 text-center">{index + 1}</div>
 
-              <div className="border p-2">{item.nama}</div>
+              <div className="border p-2 ">{item.nama}</div>
 
               <div className="border p-2 text-center">{item.juz}</div>
             </div>
