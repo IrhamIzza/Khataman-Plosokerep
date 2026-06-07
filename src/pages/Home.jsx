@@ -165,8 +165,39 @@ export default function Home() {
             <div className="text-lg">
               <p>
                 Ngaturi pirso dumateng sedoyo anggota Jam’iyah Khotmil Qur’an,
-                bilih mbenjing dinten{" "}
-                <span className="font-bold text-blue-600 underline">
+                bilih mbenjing 
+                <ul className="list-none p-0">
+                  <li className="grid grid-cols-[80px_10px_1fr]">
+                    <span>Dinten</span>
+                    <span>:</span>
+                    <span>Sabtu malem Ahad</span>
+                  </li>
+
+                  <li className="grid grid-cols-[80px_10px_1fr]">
+                    <span>Tanggal</span>
+                    <span>:</span>
+                    <span className="text-green-700 underline font-bold">{nextMalamMinggu()}</span>
+                  </li>
+
+                  <li className="grid grid-cols-[80px_10px_1fr]">
+                    <span>Waktu</span>
+                    <span>:</span>
+                    <span>Ba'dah Maghrib</span>
+                  </li>
+
+                  <li className="grid grid-cols-[80px_10px_1fr] ">
+                    <span>Tempat</span>
+                    <span>:</span>
+                    <span className="text-green-700 underline font-bold">{namaInput}</span>
+                  </li>
+
+                  <li className="grid grid-cols-[80px_10px_1fr]">
+                    <span>Alamat</span>
+                    <span>:</span>
+                    <span>{tempat}</span>
+                  </li>
+                </ul>
+                {/* <span className="font-bold text-blue-600 underline">
                   Sabtu malem Ahad tgl{" "}
                   <span className="text-green-700 underline">
                     {nextMalamMinggu()}
@@ -179,9 +210,9 @@ export default function Home() {
                 </span>
                 <span className="font-bold text-blue-600 underline whitespace-pre-line">
                   {tempat}
-                </span>
+                </span> */}
               </p>
-              <p>Makaten saking kulo, matur nuwun🙏. </p>
+              <p>Makaten saking kulo, matur nuwun🙏🙏. </p>
             </div>
 
             <img src={foto3} alt="logo" className="h-26" />
